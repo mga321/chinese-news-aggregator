@@ -1,6 +1,6 @@
 import os
+import json
 from pathlib import Path
-import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 
@@ -53,10 +53,12 @@ for listed_article in articles_list:
 
     secure_links.append(secure_link)
 
+# print(secure_links)
 
 
-# Create csv file containing all potential new links for the current day
-df = pd.DataFrame(secure_links, columns=["link"])
 
-file_destination = app_directory / "data/potential_new_links.csv"
-df.to_csv(file_destination, index=False)
+# Create json file containing all potential new links for the current day
+file_destination = app_directory / "data/potential_new_links.json"
+
+with open(file_destination, "w") as file:
+    json.dump(secure_links, file, indent=4)
