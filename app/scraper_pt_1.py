@@ -1,5 +1,14 @@
+import os
+from pathlib import Path
+import pandas as pd
 import requests
 from bs4 import BeautifulSoup
+
+
+# Change to chinese-news-aggregator directory
+app_directory = Path.home() / "OneDrive - Jobin Machine, Inc/2021/chinese-news-aggregator/app"
+os.chdir(app_directory)
+
 
 
 # Collect html code from china-us section page on China Daily website
@@ -13,7 +22,7 @@ soup = BeautifulSoup(page.content, "html.parser")
 
 
 
-# Step 1:  Collect link from primary article (top left of webpage, the left portion of html section <div class="tw2" section)
+# Article Links Part 1:  Collect link from primary article (top left of webpage, the left portion of html section <div class="tw2" section)
 secure_links = []
 
 primary_article = soup.find("span", class_="tw2_l_t")
@@ -24,7 +33,7 @@ secure_links.append(secure_link)
 
 
 
-# Step 2:  Collect links from secondary articles (top right of webpage. the right portion of html section <div class="tw2" section)
+# Article Links Part 2:  Collect links from secondary articles (top right of webpage. the right portion of html section <div class="tw2" section)
 secondary_articles = soup.find_all("div", class_="tBox2")
 
 for secondary_article in secondary_articles:
@@ -35,7 +44,7 @@ for secondary_article in secondary_articles:
 
 
 
-# Step 3:  Collect links from list of articles (center of webpage below the primary and secondary articles section, the list of <div class="mb10 tw3_01_2" sections)
+# Article Links Part 3:  Collect links from list of articles (center of webpage below the primary and secondary articles section, the list of <div class="mb10 tw3_01_2" sections)
 articles_list = soup.find_all("span", class_="tw3_01_2_t")
 
 for listed_article in articles_list:
@@ -43,3 +52,11 @@ for listed_article in articles_list:
     secure_link = "https:" + listed_article_link
 
     secure_links.append(secure_link)
+
+
+
+# Create csv file containing all potential new links for the current day
+df = pd.DataFrame(secure_links, columns=["link"])
+
+file_destination = app_directory / "data/potential_new_links.csv"
+df.to_csv(file_destination, index=False)
