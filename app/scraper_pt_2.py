@@ -1,8 +1,10 @@
 import os
 import json
+import pandas as pd
 from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
+import datetime
 
 
 # Change to chinese-news-aggregator directory
@@ -51,3 +53,17 @@ for url in secure_links:
 # for list in list_of_lists:
 #     for item in list:
 #         print(item, "\n\n")
+
+
+
+# Convert list of lists into DataFrame, filter by date (only keep today's articles
+df = pd.DataFrame(list_of_lists, columns=["date", "title", "body"])
+df["date"] = pd.to_datetime(df["date"])
+
+# Create datetime format variable for current day comparison
+today = datetime.date.today()
+today_datetime = pd.to_datetime(today)
+
+# Filter DataFrame based on today's date
+df = df[df["date"] == today_datetime]
+print(df)
