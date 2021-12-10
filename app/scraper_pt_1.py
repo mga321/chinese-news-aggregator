@@ -72,7 +72,7 @@ for func in funcs:
 
 
 # Create json file containing all potential new links for the current day
-file_destination = app_directory / "data/potential_new_links.json"
+file_destination = app_directory / "data/potential-new-links.json"
 
 with open(file_destination, "w") as file:
     json.dump(secure_links, file, indent=4)

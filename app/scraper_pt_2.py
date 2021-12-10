@@ -74,7 +74,7 @@ os.chdir(app_directory)
 
 
 # Read in the list of links
-file_source = app_directory / "data/potential_new_links.json"
+file_source = app_directory / "data/potential-new-links.json"
 with open(file_source, "r") as file:
     secure_links = json.load(file)
 
@@ -102,5 +102,5 @@ df = create_filtered_dataframe(list_of_lists, list_of_columns=["date", "title", 
 
 
 # Save DataFame to json file
-file_destination = app_directory / "data/article_data_from_new_links.json"
+file_destination = app_directory / "data/article-data-from-new-links.json"
 df.to_json(file_destination, orient="records", indent=4)
