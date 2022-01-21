@@ -69,12 +69,12 @@ def create_filtered_dataframe(data, list_of_columns):
 
 
 # Change to chinese-news-aggregator directory
-app_directory = Path.home() / "OneDrive - Jobin Machine, Inc/2021/chinese-news-aggregator/app"
-os.chdir(app_directory)
+pipeline_directory = Path.home() / "OneDrive/2021/Programming/python/chinese-news-aggregator"
+os.chdir(pipeline_directory)
 
 
 # Read in the list of links
-file_source = app_directory / "data/potential-new-links.json"
+file_source = pipeline_directory / "chinese-news-aggregator/data/potential-new-links.json"
 with open(file_source, "r") as file:
     secure_links = json.load(file)
 
@@ -102,5 +102,5 @@ df = create_filtered_dataframe(list_of_lists, list_of_columns=["date", "title", 
 
 
 # Save DataFame to json file
-file_destination = app_directory / "data/article-data-from-new-links.json"
+file_destination = pipeline_directory / "chinese-news-aggregator/data/article-data-from-new-links.json"
 df.to_json(file_destination, orient="records", indent=4)
