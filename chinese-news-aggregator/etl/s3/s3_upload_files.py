@@ -29,4 +29,4 @@ def upload_file(file_name, bucket, key=None):
 data_directory = Path.home() / "OneDrive/2021/Programming/python/chinese-news-aggregator/chinese-news-aggregator/data"
 os.chdir(data_directory)
 
-upload_file("article_data_from_new_links.json", "daily-data-collection")
+upload_file("article-data-from-new-links.json", "daily-data-collection")
