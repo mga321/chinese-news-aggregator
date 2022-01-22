@@ -26,7 +26,7 @@ def upload_file(file_name, bucket, key=None):
 
 # Change to chinese-news-aggregator directory
 # data_directory = Path.home() / "OneDrive - Jobin Machine, Inc/2021/chinese-news-aggregator/app/data"
-data_directory = Path.home() / "OneDrive/2021/Programming/python/chinese-news-aggregator/app/data"
+data_directory = Path.home() / "OneDrive/2021/Programming/python/chinese-news-aggregator/chinese-news-aggregator/data"
 os.chdir(data_directory)
 
-upload_file("article_data_from_new_links.json", "daily-data-collection")
+upload_file("article-data-from-new-links.json", "daily-data-collection")

@@ -52,8 +52,8 @@ def collect_listed_article_links(soup_object, list_of_secure_links):
 
 
 # Change to chinese-news-aggregator directory
-app_directory = Path.home() / "OneDrive - Jobin Machine, Inc/2021/chinese-news-aggregator/app"
-os.chdir(app_directory)
+pipeline_directory = Path.home() / "OneDrive/2021/Programming/python/chinese-news-aggregator"
+os.chdir(pipeline_directory)
 
 
 # Collect html code from china-us section page on China Daily website and create soup object
@@ -72,7 +72,7 @@ for func in funcs:
 
 
 # Create json file containing all potential new links for the current day
-file_destination = app_directory / "data/potential-new-links.json"
+file_destination = pipeline_directory / "chinese-news-aggregator/data/potential-new-links.json"
 
 with open(file_destination, "w") as file:
     json.dump(secure_links, file, indent=4)
