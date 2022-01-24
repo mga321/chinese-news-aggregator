@@ -1,3 +1,7 @@
+import pandas as pd
+import datetime
+
+
 # Article Links Func 1:  Collect link from primary article (top left of webpage, the left portion of html section <div class="tw2" section)
 def collect_primary_article_link(soup_object, list_of_secure_links):
     """This function takes a soup object and a list as inputs, parses thru the soup object to find
