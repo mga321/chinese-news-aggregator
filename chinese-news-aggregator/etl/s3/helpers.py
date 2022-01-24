@@ -2,7 +2,7 @@ import boto3
 import datetime
 
 
-def upload_file(file_name, bucket, key=None):
+def upload_file(file_name: str, bucket: str, key=None):
     """This function takes the updated article data file from the data directory and uploads it to
     AWS S3 using the AWS SDK for Python while providing it with a S3 Key based on the data source, section
     from the news site, and the current date.
