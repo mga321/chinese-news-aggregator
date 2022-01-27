@@ -95,7 +95,7 @@ def collect_article_body(all_article_content):
 
 
 # Article Content Collection Func 5
-def create_filtered_dataframe(data: list[list[str]], list_of_columns: list[str]):
+def create_filtered_dataframe(data: list, list_of_columns: list):
     """This function takes a list of lists and a list of the column names, creates a DataFrame, and filters that
     DataFrame by date to keep only date from articles posted on the current date."""
 
