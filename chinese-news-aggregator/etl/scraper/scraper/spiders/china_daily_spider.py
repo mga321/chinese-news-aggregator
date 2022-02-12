@@ -16,10 +16,19 @@ class ChinaDailySpider(scrapy.Spider):
         articles = response.css('div.mb10.tw3_01_2')  # Create a subset of data containing all articles from the response
 
         for article in articles:  # For each article in articles response subset
-            if article.css('b::text').get()[:10] == todays_date_string:
-                item['date'] = articles.css('b::text').get()[:10]
-                item['link'] = articles.css('a').attrib['href']
+            if article.css('b::text').get()[:10] == todays_date_string:  # If the date of the article is today's date
+                item['date'] = todays_date_string  # Store the date in a ScraperItem () instance
+                item['article_page_link'] = article.css('a').attrib['href']  # Store the date and link in a ScraperItem () instance
             else:
                 break
-            
+             
             yield item
+        
+        
+
+            #     item['date'] = articles.css('b::text').get()[:10]
+            #     item['link'] = articles.css('a').attrib['href']
+            # else:
+            #     break
+            
+            # yield item
