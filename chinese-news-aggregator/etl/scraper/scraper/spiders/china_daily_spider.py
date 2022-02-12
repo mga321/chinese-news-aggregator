@@ -1,5 +1,6 @@
 import scrapy
 import datetime
+from scraper.items import ScraperItem
 
 
 class ChinaDailySpider(scrapy.Spider):
@@ -8,14 +9,17 @@ class ChinaDailySpider(scrapy.Spider):
     allowed_domains = ['chinadaily.com.cn']
 
     def parse(self, response):
-        """Tertiary section is the list of all other articles below the primary and secondary sections."""
-        
+        """Define the primary, secondary, and tertiary sections as well as the functionality here."""
+        item = ScraperItem()
+
         todays_date_string = datetime.datetime.today().strftime('%Y-%m-%d')  # Create a variable with today's date in str format
         articles = response.css('div.mb10.tw3_01_2')  # Create a subset of data containing all articles from the response
 
         for article in articles:  # For each article in articles response subset
             if article.css('b::text').get()[:10] == todays_date_string:
-                yield {
-                    'date': articles.css('b::text').get()[:10],
-                    'link': articles.css('a').attrib['href']
-                }
+                item['date'] = articles.css('b::text').get()[:10]
+                item['link'] = articles.css('a').attrib['href']
+            else:
+                break
+            
+            yield item
