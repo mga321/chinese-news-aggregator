@@ -1,6 +1,7 @@
 import scrapy
 import datetime
 from scraper.items import ScraperItem
+from scrapy.exporters import JsonItemExporter
 
 
 class ChinaDailySpider(scrapy.Spider):
@@ -19,6 +20,13 @@ class ChinaDailySpider(scrapy.Spider):
             if article.css('b::text').get()[:10] == todays_date_string:  # If the date of the article is today's date
                 item['date'] = todays_date_string  # Store the date in a ScraperItem () instance
                 item['article_page_link'] = article.css('a').attrib['href']  # Store the date and link in a ScraperItem () instance
+                
+                # NEXT STEPS
+                # 1. Follow the link
+
+                # 2. Collect any article data I still need
+
+
             else:
                 break
              
