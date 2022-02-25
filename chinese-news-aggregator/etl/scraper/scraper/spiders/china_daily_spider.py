@@ -23,20 +23,15 @@ class ChinaDailySpider(scrapy.Spider):
                 
                 # NEXT STEPS
                 # 1. Follow the link
+                article_page = item.article_page_link
+                yield response.follow(article_page, callback=self.parse_article_page)
 
                 # 2. Collect any article data I still need
-
 
             else:
                 break
              
             yield item
-        
-        
-
-            #     item['date'] = articles.css('b::text').get()[:10]
-            #     item['link'] = articles.css('a').attrib['href']
-            # else:
-            #     break
-            
-            # yield item
+    
+    def parse_article_page(self, response):
+        pass
