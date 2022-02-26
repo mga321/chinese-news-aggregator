@@ -1,7 +1,6 @@
 import scrapy
 import datetime
-# from scraper.items import ScraperItem
-# from scrapy.exporters import JsonItemExporter
+
 
 todays_date_string = datetime.datetime.today().strftime('%Y-%m-%d')
 
@@ -24,12 +23,15 @@ class ChinaDailySpider(scrapy.Spider):
     
 
     def parse_article_content(self, response):
-        all_content = response.css('div.lft_art')
+        """Documentation here."""
+
+        article_content = response.css('div.lft_art')
 
         yield {
             'date': todays_date_string,
             # 'article_link': 
-            'title': all_content.css('h1::text').get(),
-            'author': all_content.css('span.info_l::text').get().split('|')[0],
-            'content': all_content.css('p::text').getall()            
+            'title': article_content.css('h1::text').get(),
+            'author': article_content.css('span.info_l::text').get(),
+            'location': article_content.css('span.info_l::text').get(),
+            'body': article_content.css('p').getall()
         }
