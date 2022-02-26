@@ -8,9 +8,8 @@ import scrapy
 
 class ScraperItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
     date = scrapy.Field()
-    article_page_link = scrapy.Field()
+    article_link = scrapy.Field()
     title = scrapy.Field()
     author = scrapy.Field()
     location = scrapy.Field()
