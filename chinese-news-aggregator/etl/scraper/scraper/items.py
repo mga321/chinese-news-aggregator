@@ -11,3 +11,7 @@ class ScraperItem(scrapy.Item):
     # name = scrapy.Field()
     date = scrapy.Field()
     article_page_link = scrapy.Field()
+    title = scrapy.Field()
+    author = scrapy.Field()
+    location = scrapy.Field()
+    body = scrapy.Field()
