@@ -29,7 +29,7 @@ from scrapy.exporters import JsonItemExporter
 class ScraperPipeline:
 
     def __init__(self):
-        self.fp = open('json.json', 'wb')
+        self.fp = open('scraped-data/test.json', 'wb')
         self.exporter = JsonItemExporter(self.fp)
         self.exporter.start_exporting()
     
@@ -47,35 +47,3 @@ class ScraperPipeline:
         self.exporter.finish_exporting()
         self.fp.close()
         print('The crawler is done.')
-    
-
-    # def start_exporting(self):
-    #     self.file.write(b"[")
-    #     self._beautify_newline()
-    
-
-    # def finish_exporting(self):
-    #     self._beautify_newline()
-    #     self.file.write(b"]")
-    
-
-    # def export_item(self, item):
-    #     if self.first_item:
-    #         self.first_item = False
-    #     else:
-    #         self.file.write(b",")
-    #         self._beautify_newline()
-        
-    #     itemdict = dict(self._get_serialized_fields(item))
-    #     data = self.encoder.encode(itemdict)
-    #     self.file.write(to_bytes(data, self.encoding))
-
-
-    # def process_item(self, item, spider):
-
-    #     exporter = JsonItemExporter('data/file-name-here.json')
-    #     exporter.start_exporting()
-    #     exporter.export_item(item)
-    #     exporter.finish_exporting()
-
-    #     return item
