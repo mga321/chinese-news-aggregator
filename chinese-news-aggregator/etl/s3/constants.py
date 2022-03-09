@@ -1,3 +1,5 @@
 from pathlib import Path
 
-DATA_DIRECTORY = "chinese-news-aggregator/chinese-news-aggregator/data"
+
+PROJECT_DIRECTORY = Path.home() / "OneDrive - Jobin Machine, Inc/2021/chinese-news-aggregator"
+DATA_DIRECTORY = PROJECT_DIRECTORY / "chinese-news-aggregator/etl/scraper/scraped-data"

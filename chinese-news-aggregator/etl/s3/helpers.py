@@ -11,7 +11,7 @@ def upload_file(file_name: str, bucket: str, key=None):
     # bucket is the bucket name to upload to
     # key is the name the file will have in s3"""
 
-    today_str = (datetime.date.today()).strftime("%Y-%m-%d")
+    today_str = datetime.date.today().strftime("%Y-%m-%d")
 
     if key is None:
         key = f"china-daily/china-us/" + today_str + ".json"
