@@ -8,7 +8,7 @@ todays_date_string = datetime.datetime.today().strftime('%Y-%m-%d')
 
 
 class ChinaDailySpider(scrapy.Spider):
-    name = 'china_daily_with_items'
+    name = 'china_daily'
     start_urls = ['https://www.chinadaily.com.cn/world/china-us']
     allowed_domains = ['chinadaily.com.cn']
 
