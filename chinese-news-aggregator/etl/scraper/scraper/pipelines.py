@@ -29,7 +29,7 @@ from scrapy.exporters import JsonItemExporter
 class ScraperPipeline:
 
     def __init__(self):
-        self.fp = open('scraped-data/test.json', 'wb')
+        self.fp = open('scraped-data/china-daily-data.json', 'wb')
         self.exporter = JsonItemExporter(self.fp)
         self.exporter.start_exporting()
     
