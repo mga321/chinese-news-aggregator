@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 
 
-PROJECT_DIRECTORY = Path.home() / "Documents/python/chinese-news-aggregator"
+PROJECT_DIRECTORY = Path.home() / "Documents/python/projects/chinese-news-aggregator"
 SCRAPER_DIRECTORY = PROJECT_DIRECTORY / "chinese-news-aggregator/etl/scraper"
 SCRAPED_DATA_DIRECTORY = SCRAPER_DIRECTORY / "scraped-data"
 

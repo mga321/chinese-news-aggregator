@@ -4,7 +4,7 @@ from scraper.items import ScraperItem
 
 
 # Get the current date in string format
-todays_date_string = '2022-03-10'  # datetime.datetime.today().strftime('%Y-%m-%d')
+todays_date_string = datetime.datetime.today().strftime('%Y-%m-%d')
 
 
 class ChinaDailySpider(scrapy.Spider):
